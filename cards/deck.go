@@ -7,6 +7,23 @@ type deck []string
 
 // can now use deck in place of []string!
 
+// should create and return a list of all the cards
+func newDeck() deck {
+	cards := deck{}
+
+	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
+	cardValues := []string{"Ace", "Two", "Three", "Four"}
+
+	for _, suit := range cardSuits {
+		for _, value := range cardValues {
+			cards = append(cards, value+" of "+suit)
+		}
+	}
+	// replace i, j, etc with _ when we need to declare the var and not use it
+
+	return cards
+}
+
 func (d deck) print() {
 	for i, card := range d {
 		fmt.Println(i, card)
