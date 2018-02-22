@@ -3,13 +3,17 @@ package main
 import "fmt"
 
 func main() {
-	card := newCard()
+	cards := []string{"Ace of Diamonds", newCard()}
+	cards = append(cards, "Six of Spades")
+	// append does not modify; returns new slice that is then assigned to the cards variable
 
-	fmt.Println(card)
+	for i, card := range cards {
+		fmt.Println(i, card)
+	}
+	// "range" is the keyword to iterate over every record inside of a slice
+	// use := to reinitialize variable with each iteration
 }
 
 func newCard() string {
 	return "Five of Diamonds"
 }
-
-// must tell Go what type of data the function will return - so now Go knows that the card variable will always hold a string
