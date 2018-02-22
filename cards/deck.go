@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -32,13 +33,23 @@ func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
 
-// returns two values, both of type deck. set equal to two vars in main.go
-
-// convert data to type string:
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
 
 func (d deck) saveToFile(filename string) error {
 	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+func newDeckFromFile(filename string) deck {
+	bs, err := ioutil.ReadFile(filename)
+	if err != nil {
+		// Option 1: log error and return call to newDeck()
+		// Option 2: log error and entirely quite program
+		fmt.Println("Error reading file: ", err)
+		os.Exit(1)
+	}
+
+	s := strings.Split(string(bs), ",")
+	return deck(s)
 }
