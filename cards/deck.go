@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type deck []string
 
@@ -29,3 +32,8 @@ func deal(d deck, handSize int) (deck, deck) {
 }
 
 // returns two values, both of type deck. set equal to two vars in main.go
+
+// convert data to type string:
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
+}
