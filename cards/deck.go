@@ -15,7 +15,7 @@ func newDeck() deck {
 	cards := deck{}
 
 	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
-	cardValues := []string{"Ace", "Two", "Three", "Four"}
+	cardValues := []string{"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"}
 
 	for _, suit := range cardSuits {
 		for _, value := range cardValues {
@@ -46,8 +46,6 @@ func (d deck) saveToFile(filename string) error {
 func newDeckFromFile(filename string) deck {
 	bs, err := ioutil.ReadFile(filename)
 	if err != nil {
-		// Option 1: log error and return call to newDeck()
-		// Option 2: log error and entirely quite program
 		fmt.Println("Error reading file: ", err)
 		os.Exit(1)
 	}
@@ -61,9 +59,7 @@ func (d deck) shuffle() {
 	r := rand.New(source)
 
 	for i := range d {
-		// pick an index position at random:
 		newPosition := r.Intn(len(d) - 1)
-		// swap elements:
 		d[i], d[newPosition] = d[newPosition], d[i]
 	}
 }
