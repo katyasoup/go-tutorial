@@ -5,17 +5,19 @@ import (
 )
 
 func main() {
-	// var colors map[string]string
+	colors := map[string]string{
+		"red":    "#ff0000",
+		"badass": "#b4d455",
+		"white":  "#ffffff",
+	}
 
-	colors := make(map[string]string)
-	colors["white"] = "#ffffff"
-
-	delete(colors, "white")
-
-	// colors := map[string]string{
-	// 	"red":       "#ff0000",
-	// 	"coolGreen": "#b4d455",
-	// }
-
-	fmt.Println(colors)
+	printMap(colors)
 }
+
+func printMap(myMap map[string]string) {
+	for color, hex := range myMap {
+		fmt.Println("Hex code for", color, "is", hex)
+	}
+}
+
+// see lecture 51 for differences btwn maps and structs
