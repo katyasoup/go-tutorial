@@ -15,18 +15,14 @@ type person struct {
 }
 
 func main() {
-	// katie := person{firstName: "Katie", lastName: "Campbell", age: 29}
-	// fmt.Println(katie)
-
-	var katie person
-	// declare a struct with no assigned values
-
-	katie.firstName = "Katie"
-	katie.lastName = "Campbell"
-	katie.age = 29
-	// create attributes for katie struct
-
-	fmt.Println(katie)
+	katie := person{
+		firstName: "Katie",
+		lastName:  "Campbell",
+		age:       29,
+		contact: contactInfo{
+			email:   "hello@katyasoup.com",
+			zipCode: 55405,
+		}, // needs a comma too!
+	}
 	fmt.Printf("%+v", katie)
-
 }
