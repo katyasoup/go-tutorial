@@ -11,7 +11,7 @@ type person struct {
 	firstName string
 	lastName  string
 	age       int
-	contact   contactInfo
+	contactInfo
 }
 
 func main() {
@@ -19,10 +19,22 @@ func main() {
 		firstName: "Katie",
 		lastName:  "Campbell",
 		age:       29,
-		contact: contactInfo{
+		contactInfo: contactInfo{
 			email:   "hello@katyasoup.com",
 			zipCode: 55405,
-		}, // needs a comma too!
+		},
 	}
-	fmt.Printf("%+v", katie)
+
+	katiePointer := &katie
+	katiePointer.updateName("Zeke")
+	katie.print()
+	// see section 4, lecture 43/44 for explanation of pointers
+}
+
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
+}
+
+func (p person) print() {
+	fmt.Printf("%+v", p)
 }
