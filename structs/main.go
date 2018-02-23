@@ -25,10 +25,10 @@ func main() {
 		},
 	}
 
-	katiePointer := &katie
-	katiePointer.updateName("Zeke")
+	katie.updateName("Zeke")
 	katie.print()
-	// see section 4, lecture 43/44 for explanation of pointers
+	// go allows this shortcut to automatically turn person into pointerToPerson, neat!
+	// but you GOTTA keep that asterisk in the receiver down there
 }
 
 func (pointerToPerson *person) updateName(newFirstName string) {
@@ -38,3 +38,6 @@ func (pointerToPerson *person) updateName(newFirstName string) {
 func (p person) print() {
 	fmt.Printf("%+v", p)
 }
+
+// note - slices are modified on the original, unlike structs! GOTCHA
+// (explanation in lecture 47)
